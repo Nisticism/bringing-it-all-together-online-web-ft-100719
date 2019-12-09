@@ -62,6 +62,8 @@ class Dog
     new_dog = Dog.new(result[0], result[1], result[2])
     new_dog
   end
+  
+  def self.new_from_db()
     
 
 end
