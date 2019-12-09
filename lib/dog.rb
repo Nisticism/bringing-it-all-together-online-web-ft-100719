@@ -47,7 +47,7 @@ class Dog
       SQL
  
       DB[:conn].execute(sql, self.name, self.breed)
-      @id = DB[:conn].execute("SELECT MAX(id) FROM dogs")
+      @id = DB[:conn].execute("SELECT MAX(id) FROM dogs")[0]
       new_dog = self.find_by_name(self.name)
       new_dog
     end
@@ -67,7 +67,7 @@ class Dog
   
   def self.find_by_id(id)
     sql = "SELECT * FROM dogs WHERE id = ?"
-    result = DB[:conn].execute(sql, id[0]
+    result = DB[:conn].execute(sql, id)[0]
     new_dog = Dog.new(result[0], result[1], result[2])
     new_dog
   end
