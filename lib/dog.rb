@@ -29,8 +29,8 @@ class Dog
     DB[:conn].execute(sql)
   end
   
-  def self.create(id: nil, name:, breed:)
-    dog = Dog.new(id: id, name: name, breed: breed)
+  def self.create(name:, breed:)
+    dog = Dog.new(name: name, breed: breed)
     dog.save
     dog
   end
@@ -78,11 +78,11 @@ class Dog
   def self.find_or_create_by(name:, breed:)
     sql = "SELECT * FROM dogs WHERE name = ? AND breed = ?"
     result = DB[:conn].execute(sql, name, breed)[0]
-    if result[0]
+    if result.empty?
       new_dog = self.new(id: result[0], name: result[1], breed: result[2])
       return new_dog
     else 
-      new_dog = self.create(id: nil, name: name, breed: breed)
+      new_dog = self.create(name: name, breed: breed)
       return new_dog
     end
     
