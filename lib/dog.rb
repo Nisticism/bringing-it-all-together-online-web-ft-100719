@@ -3,8 +3,9 @@ class Dog
   attr_accessor :name, :breed
   attr_reader :id
   
-  def initialize(id=nil, name:, breed:)
+  def initialize(id:, name:, breed:)
     
+    self.id = nil
     @name = name
     @id = id
     @breed = breed 
