@@ -80,7 +80,8 @@ class Dog
     result = DB[:conn].execute(sql, name, breed)[0]
     if result
       dog_data = result
-      return self.new(id: dog_data[0], name: dog_data[1], breed: dog_data[2])
+      new_dog = self.new(id: dog_data[0], name: dog_data[1], breed: dog_data[2])
+      new_dog
     else 
       return self.create(name: name, breed: breed)
     end
