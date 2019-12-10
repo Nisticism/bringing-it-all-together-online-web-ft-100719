@@ -46,7 +46,7 @@ class Dog
  
       DB[:conn].execute(sql, self.name, self.breed)
       @id = DB[:conn].execute("SELECT MAX(id) FROM dogs")[0]
-      new_dog = self.find_by_name(self.name)
+      new_dog = find_by_name(self.name)
       new_dog
     end
   end
