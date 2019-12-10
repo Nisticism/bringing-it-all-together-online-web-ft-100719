@@ -53,7 +53,7 @@ class Dog
   
   def update
     sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
-    DB[:conn].execute(sql, @name, @breed, @id)
+    DB[:conn].execute(sql, self.name, self.breed, self.id)
   end
   
   def self.find_by_name(name)
@@ -75,7 +75,10 @@ class Dog
     new_dog
   end
   
-  def self.find_or_create_by
+  def self.find_or_create_by(name:, breed:)
+    
+    
+  end
     
 
 end
