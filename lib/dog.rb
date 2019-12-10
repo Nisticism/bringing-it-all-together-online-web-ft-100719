@@ -59,19 +59,19 @@ class Dog
   def self.find_by_name(name)
     sql = "SELECT * FROM dogs WHERE name = ? LIMIT 1"
     result = DB[:conn].execute(sql, name)[0]
-    new_dog = Dog.new(result[0], result[1], result[2])
+    new_dog = Dog.new(id: result[0], name: result[1], breed: result[2])
     new_dog
   end
   
   def self.find_by_id(id)
     sql = "SELECT * FROM dogs WHERE id = ?"
     result = DB[:conn].execute(sql, id)[0]
-    new_dog = Dog.new(result[0], result[1], result[2])
+    new_dog = Dog.new(id: result[0], name: result[1], row: result[2])
     new_dog
   end
   
   def self.new_from_db(row)
-    dog = self.new(row[0], name=row[1], breed=row[2])
+    dog = self.new(id: row[0], name: row[1], breed: row[2])
     # dog.id = row[0]
     # dog.name = row[1]
     # dog.breed = row[2]
